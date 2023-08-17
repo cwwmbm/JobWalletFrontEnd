@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import { JobContext } from '../context/JobContext'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Card, Avatar, Heading, Flex, Text } from '@radix-ui/themes';
 // import { Card, CardHeader, CardBody, CardFooter, Heading, Avatar } from '@chakra-ui/react'
 // import {}
 import './Jobcard.css';
 
 function Jobcard({job}) {
-  const [isSelected, setIsSelected] = useState(false)
-  const [prevID, setPrevID] = useState(null)
+  // const [isSelected, setIsSelected] = useState(false)
+  // const [prevID, setPrevID] = useState(null)
   const { selectJob, selectedJobID } = useContext(JobContext)
 
   const handleClick = () => {
@@ -21,17 +21,17 @@ function Jobcard({job}) {
           // this style is for BG color when the card is selected
           style={{ backgroundColor: selectedJobID === job.id ? '#cacaca' : 'initial'}}
           // some Tailwind styles. "card-hover" is for hover useEffect, styling is in Jobcard.css
-          className="card-hover mx-3 w-96 gap-3 max-w-md hover:cursor-pointer"
+          className="card-hover mx-3 w-96 gap-3 max-w-md hover:cursor-pointer hover:bg-gray-200"
           //What happens when we click on the card
           onClick={() => handleClick()}
         >
         <Flex justify="between">
           <Flex direction="column" className='mr-16'>
-            <Heading size="5">{job.title}</Heading>
+            <Heading size="4">{job.title}</Heading>
             <Flex direction="column">
-              <Text>{job.company}</Text>
-              <Text>{job.location}</Text>
-              <div>{job.date}</div>
+              <Text size="2">{job.company}</Text>
+              <Text size="2">{job.location}, {job.date}</Text>
+              {/* <Text size="1">{job.date}</Text> */}
             </Flex>
           </Flex>
           <Flex direction="column">
